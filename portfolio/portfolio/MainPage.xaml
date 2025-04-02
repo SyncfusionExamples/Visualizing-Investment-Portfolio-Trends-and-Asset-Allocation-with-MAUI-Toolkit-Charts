@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             xmlns:model="clr-namespace:portfolio"
+             x:Class="portfolio.MainPage">
+
+    <Border StrokeThickness="0" Padding="{OnPlatform Default=8, Android=7,iOS=7}" Margin="5,0">
+        <Grid>
+            <Grid.BindingContext>
+                <model:PortfolioViewModel x:Name="viewModel"/>
+            </Grid.BindingContext>
+
+            <Grid RowSpacing="{OnPlatform Default='-20', Android=10, iOS=10, MacCatalyst='-7,0'}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="0.9*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="{OnPlatform Default='-10,0,0,0',Android='-10', iOS=-10}">
+                    <Grid.Resources>
+                        <ResourceDictionary>
+                            <x:String x:Key="UpTrendIcon">M3.8739986,19.901001L8.4650002,19.901001 8.4650002,24.780001 3.8739986,24.780001z M16.645999,
+                                    17.174001L21.237,17.174001 21.237,24.779001 16.645999,24.779001z M10.188,15.478001L14.78,15.478001 14.78,24.780001 10.188,
+                                    24.780001z M23.39,12.207L27.981999,12.207 27.981999,24.780001 23.39,24.780001z M19.189,11.368001L19.189,14.481 19.426,14.436001C19.804999,
+                                    14.365001 20.118999,14.186001 20.356999,13.904001 20.596,13.621001 20.717999,13.284001 20.718,12.904 20.717999,12.559 20.613999,
+                                    12.257001 20.408999,12.005001 20.208,11.759001 19.883999,11.569 19.444,11.442z M18.620999,6.8530006L18.356999,6.9430008C18.054999,
+                                    7.0440006 17.810999,7.2210007 17.631,7.4690003 17.449999,7.7170005 17.359,7.9950004 17.359,8.2940006 17.359,8.5700006 17.442999,8.8310003 17.607999,
+                                    9.0670004 17.771999,9.2990003 18.018,9.4880004 18.342,9.6260004L18.620999,9.7470007z M18.620999,4.5480003L19.189,4.5480003 19.189,5.8530006 19.365,
+                                    5.8740005C20.026,5.9530001 20.556,6.1790009 20.941,6.5450001 21.283,6.8710003 21.518,7.3020005 21.641,7.8290005L20.342999,7.9990005C20.203,
+                                    7.5060005,19.909999,7.1590004,19.467999,6.9690008L19.189,6.8480005 19.189,9.9170003 19.336999,9.9570007C20.36,10.234001 21.061,
+                                    10.591001 21.42,11.018001 21.775,11.440001 21.954999,11.993001 21.955,12.663001 21.954999,13.414001 21.725,14.055001 21.273999,
+                                    14.568001 20.819999,15.081001 20.177,15.400001 19.36,15.517001L19.189,15.542001 19.189,16.764001 18.620999,16.764001 18.620999,
+                                    15.572 18.445,15.550001C17.723,15.463001 17.131,15.192001 16.684,14.746001 16.275,14.335001 15.995999,13.757001 15.855,
+                                    13.026L17.210999,12.880001C17.294,13.191001 17.427,13.469001 17.605999,13.706 17.821,13.988001 18.066,14.197001 18.334,
+                                    14.326001L18.620999,14.464001 18.620999,11.197001 18.474999,11.155001C17.646999,10.918001 17.034999,10.559 16.656,10.089001 16.28,
+                                    9.6220007 16.089,9.0460005 16.089,8.3740005 16.089,7.6900005 16.297999,7.1330004 16.727,6.6710005 17.151,6.2130003 17.728,
+                                    5.9450006 18.44,5.875L18.620999,5.8570004z M13.337,3.0799999L15.964,5.4570007C15.872999,5.5390005 15.783,5.6240005 15.698999,
+                                    5.7150002 15.332,6.1100006 15.068,6.5570002 14.9,7.0490007L13.337,5.6630001 5.4440002,12.982 3.5790005,11.690001z M0,
+                                    0.81500053L1.4349995,0.81500053 1.4349995,26.358001 32,26.358001 32,27.793001 1.4349995,27.793001 0,27.793001 0,
+                                    26.358001z M27.939,0L27.935999,5.1670008 26.416,3.79 23.014,7.5460005C22.837,6.7620001,22.485,6.1050005,21.964999,
+                                    5.5880003L24.817,2.3629999 24.942999,2.4580002 23.286999,0.95800018z</x:String>
+                        </ResourceDictionary>
+                    </Grid.Resources>
+                    <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="{OnPlatform Android=45,Default=80,iOS=50}"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Path Grid.Column="0" Data="{StaticResource UpTrendIcon}" Fill="#FF000000" Margin="10,10,10,0">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <TransformGroup.Children>
+                                            <RotateTransform Angle="0"/>
+                                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                        </TransformGroup.Children>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            
+                            <StackLayout Grid.Column="1" VerticalOptions="Center" Margin="{OnPlatform Android= '-5,15,0,0', iOS='-5,15,0,0', Default='-5,0,0,25'}">
+                                <Label Text="Investment Portfolio: A 20-Year Analysis of Growth, Returns, and Asset Allocation for Individuals" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="{OnPlatform Android=12,Default=20,iOS=12}" FontAttributes="Bold" TextColor="Black"/>
+                            </StackLayout>
+                        </Grid> 
+                    </StackLayout>
+                </Grid>
+                
+                <Grid Grid.Row="1" ColumnSpacing="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.6*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10">
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <chart:SfCircularChart Grid.Row="0" HorizontalOptions="Fill"
+                                                   VerticalOptions="Fill">      
+                                <chart:SfCircularChart.Title>
+                                    <Grid>
+                                        <Label Text="Asset Allocation Distribution" HorizontalTextAlignment="Center"
+                                               TextColor="Black" Margin="0,12,80,0"/>
+                                    </Grid>
+                                </chart:SfCircularChart.Title>
+                                <chart:SfCircularChart.Legend>
+                                    <chart:ChartLegend Placement="Right"/>
+                                </chart:SfCircularChart.Legend>
+                                
+                                <chart:PieSeries ItemsSource="{Binding Source={x:Reference viewModel}, Path=PortfolioData}"
+                                                 PaletteBrushes="{Binding Source={x:Reference viewModel}, Path=Palette}" ShowDataLabels="True"
+                                                 x:Name="UpdateCircleData" XBindingPath="Sector" YBindingPath="Value">
+                                    <chart:PieSeries.DataLabelSettings>
+                                        <chart:CircularDataLabelSettings>
+                                            <chart:CircularDataLabelSettings.LabelStyle>
+                                                <chart:ChartDataLabelStyle LabelFormat="0'%"/>
+                                            </chart:CircularDataLabelSettings.LabelStyle>
+                                        </chart:CircularDataLabelSettings>
+                                    </chart:PieSeries.DataLabelSettings>
+                                </chart:PieSeries>                     
+                            </chart:SfCircularChart>
+                            <Grid Grid.Row="1" HorizontalOptions="End" VerticalOptions="Start">
+                                <Picker ItemsSource="{Binding Source={x:Reference viewModel}, Path=Years}" 
+                                        SelectedIndex="0"
+                                        SelectedIndexChanged="Picker_SelectedIndexChanged"/>    
+                            </Grid> 
+                        </Grid>
+                    </Border>
+                    <Grid Grid.Column="1" Grid.Row="1" RowSpacing="12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Grid.Column="1" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10">
+                            <Grid Padding="{OnPlatform Default='10,0', Android='10,0', iOS='10,0'}">
+                                <chart:SfCartesianChart x:Name="dateTimeChart">
+                                    <chart:SfCartesianChart.Title>
+                                        <Grid>
+                                            <Label Text="Portfolio Growth Over 20 Years" HorizontalTextAlignment="Center" TextColor="Black" Margin="{OnPlatform Default=10, Android=7, iOS=7}"/>
+                                        </Grid>
+                                    </chart:SfCartesianChart.Title>
+                                    <chart:SfCartesianChart.XAxes>
+                                        <chart:DateTimeAxis>
+                                            <chart:DateTimeAxis.LabelStyle>
+                                                <chart:ChartAxisLabelStyle TextColor="Black"/>
+                                            </chart:DateTimeAxis.LabelStyle>
+                                            <chart:DateTimeAxis.AxisLineStyle>
+                                                <chart:ChartLineStyle Stroke="Black"/>
+                                            </chart:DateTimeAxis.AxisLineStyle>
+                                        </chart:DateTimeAxis>
+                                    </chart:SfCartesianChart.XAxes>
+                                    <chart:SfCartesianChart.YAxes>
+                                        <chart:NumericalAxis>
+                                            <chart:NumericalAxis.LabelStyle>
+                                                <chart:ChartAxisLabelStyle Stroke="Black" TextColor="Black"/>
+                                            </chart:NumericalAxis.LabelStyle>
+                                            <chart:NumericalAxis.AxisLineStyle>
+                                                <chart:ChartLineStyle Stroke="Black"/>
+                                            </chart:NumericalAxis.AxisLineStyle>
+                                        </chart:NumericalAxis>
+                                    </chart:SfCartesianChart.YAxes>
+                                    <chart:SfCartesianChart.ZoomPanBehavior>
+                                        <chart:ChartZoomPanBehavior MaximumZoomLevel="4" ZoomMode="X"/>
+                                    </chart:SfCartesianChart.ZoomPanBehavior>
+                                    <chart:LineSeries ItemsSource="{Binding PortfolioHistory}" EnableTooltip="True" StrokeDashArray="1,3" Fill="#006A71" StrokeWidth="2" XBindingPath="Year" YBindingPath="PortfolioValue">
+                                    </chart:LineSeries>
+                                </chart:SfCartesianChart>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Row="1" Grid.Column="1" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10">
+                            <Grid Padding="{OnPlatform Default='10,0', Android='7,0', iOS='7,0'}"> 
+                                <chart:SfCartesianChart>
+                                    <chart:SfCartesianChart.Title>
+                                        <Grid>
+                                            <Label Text="Yearly Portfolio Performance: Returns Over Time" HorizontalTextAlignment="Center" TextColor="Black" Margin="{OnPlatform Default=10, Android=7, iOS=7}"/>
+                                        </Grid>
+                                    </chart:SfCartesianChart.Title>
+                                    <chart:SfCartesianChart.XAxes>
+                                        <chart:DateTimeAxis>
+                                            <chart:DateTimeAxis.LabelStyle>
+                                                <chart:ChartAxisLabelStyle Stroke="Black" TextColor="Black"/>
+                                            </chart:DateTimeAxis.LabelStyle>
+                                            <chart:DateTimeAxis.AxisLineStyle>
+                                                <chart:ChartLineStyle Stroke="Black"/>
+                                            </chart:DateTimeAxis.AxisLineStyle>
+                                        </chart:DateTimeAxis>
+                                    </chart:SfCartesianChart.XAxes>
+                                    <chart:SfCartesianChart.YAxes>
+                                        <chart:NumericalAxis>
+                                            <chart:NumericalAxis.LabelStyle>
+                                                <chart:ChartAxisLabelStyle Stroke="Black" TextColor="Black"/>
+                                            </chart:NumericalAxis.LabelStyle>
+                                            <chart:NumericalAxis.AxisLineStyle>
+                                                <chart:ChartLineStyle Stroke="Black"/>
+                                            </chart:NumericalAxis.AxisLineStyle>
+                                        </chart:NumericalAxis>
+                                    </chart:SfCartesianChart.YAxes>
+                                    <chart:ColumnSeries ItemsSource="{Binding PortfolioHistory}" EnableTooltip="True" Fill="#006A71" x:Name="UpdateColumnData" XBindingPath="Year" YBindingPath="AnnualReturn">
+                                    </chart:ColumnSeries>
+                                </chart:SfCartesianChart>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border> 
+</ContentPage>
