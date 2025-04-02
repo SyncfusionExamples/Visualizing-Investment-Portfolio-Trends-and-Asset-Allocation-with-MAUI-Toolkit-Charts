@@ -14,6 +14,7 @@ The customization options include chart interactive tooltips to enhance the user
 Syncfusion toolkit charts provide extensive customization for tooltips to enhance interactivity. [Tooltips](https://help.syncfusion.com/maui/cartesian-charts/tooltip#template) display detailed information about asset distribution, historical values, and performance changes when users hover over data points.
 
 After executing these code examples, we will get the output that resembles the following image.
+![portfolio](https://github.com/user-attachments/assets/84dd4a94-97c7-42a1-80b3-be80fdf427e1)
 
 
 ## Troubleshooting
