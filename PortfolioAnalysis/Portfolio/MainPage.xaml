@@ -5,14 +5,13 @@
              xmlns:model="clr-namespace:Portfolio.ViewModel"
              x:Class="Portfolio.MainPage">
 
-    <Border StrokeThickness="0" Padding="{OnPlatform Default=8, Android=7,iOS=7}" Margin="5,0">
-        <Grid>
+    <Border StrokeThickness="0" Padding="{OnPlatform Default=8, Android=7,iOS=7}" Margin="5,0"> 
+        <Grid RowSpacing="{OnPlatform Default='-20', Android=10, iOS=10, MacCatalyst='-7,0'}">
+
             <Grid.BindingContext>
                 <model:PortfolioViewModel x:Name="viewModel"/>
             </Grid.BindingContext>
-
-            <Grid RowSpacing="{OnPlatform Default='-20', Android=10, iOS=10, MacCatalyst='-7,0'}">
-                <Grid.RowDefinitions>
+            <Grid.RowDefinitions>
                     <RowDefinition Height="0.1*"/>
                     <RowDefinition Height="0.9*"/>
                 </Grid.RowDefinitions>
@@ -76,19 +75,19 @@
                         <ColumnDefinition Width="0.4*"/>
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10">
-                        <Grid Padding="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <chart:SfCircularChart Grid.Row="0" HorizontalOptions="Fill"
+                        <chart:SfCircularChart Grid.Row="0" HorizontalOptions="Fill" Margin="10"
                                             VerticalOptions="Fill">
                                 <chart:SfCircularChart.Title>
-                                    <Grid>
-                                        <Label Text="Asset Allocation Distribution" HorizontalTextAlignment="Center"
-                                        TextColor="Black" Margin="0,12,80,0"/>
-                                    </Grid>
-                                </chart:SfCircularChart.Title>
+                                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                                    <Label Text="Asset Allocation Distribution"
+                                           HorizontalOptions="Center"
+                                           TextColor="Black" Margin="{OnPlatform Default='280,12,0,0', Android='100,10,0,0'} "/>
+                                    <Picker ItemsSource="{Binding Source={x:Reference viewModel}, Path=Years}" 
+                                            SelectedIndex="0"  Margin="{OnPlatform Default='280,0,0,0', Android='100,0,0,0'}"
+                                            HorizontalOptions="End"
+                                            SelectedIndexChanged="Picker_SelectedIndexChanged"/>    
+                                </HorizontalStackLayout>
+                            </chart:SfCircularChart.Title>
                                 <chart:SfCircularChart.Legend>
                                     <chart:ChartLegend Placement="Right"/>
                                 </chart:SfCircularChart.Legend>
@@ -104,22 +103,15 @@
                                         </chart:CircularDataLabelSettings>
                                     </chart:PieSeries.DataLabelSettings>
                                 </chart:PieSeries>
-                            </chart:SfCircularChart>
-                            <Grid Grid.Row="1" HorizontalOptions="End" VerticalOptions="Start">
-                                <Picker ItemsSource="{Binding Source={x:Reference viewModel}, Path=Years}" 
-                                 SelectedIndex="0"
-                                 SelectedIndexChanged="Picker_SelectedIndexChanged"/>
-                            </Grid>
-                        </Grid>
+                            </chart:SfCircularChart> 
                     </Border>
                     <Grid Grid.Column="1" Grid.Row="1" RowSpacing="12">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Border Grid.Row="0" Grid.Column="1" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10">
-                            <Grid Padding="{OnPlatform Default='10,0', Android='10,0', iOS='10,0'}">
-                                <chart:SfCartesianChart x:Name="dateTimeChart">
+                        <Border Grid.Row="0" Grid.Column="1" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10"> 
+                                <chart:SfCartesianChart x:Name="dateTimeChart" Margin="{OnPlatform Default='10,0', Android='10,0', iOS='10,0'}">
                                     <chart:SfCartesianChart.Title>
                                         <Grid>
                                             <Label Text="Portfolio Growth Over 20 Years" HorizontalTextAlignment="Center" TextColor="Black" Margin="{OnPlatform Default=10, Android=7, iOS=7}"/>
@@ -150,12 +142,11 @@
                                     </chart:SfCartesianChart.ZoomPanBehavior>
                                     <chart:LineSeries ItemsSource="{Binding PortfolioHistory}" EnableTooltip="True" StrokeDashArray="1,3" Fill="#006A71" StrokeWidth="2" XBindingPath="Year" YBindingPath="PortfolioValue">
                                     </chart:LineSeries>
-                                </chart:SfCartesianChart>
-                            </Grid>
+                                </chart:SfCartesianChart> 
                         </Border>
-                        <Border Grid.Row="1" Grid.Column="1" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10">
-                            <Grid Padding="{OnPlatform Default='10,0', Android='7,0', iOS='7,0'}">
-                                <chart:SfCartesianChart>
+                        <!--Portfolio-->
+                        <Border Grid.Row="1" Grid.Column="1" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10"> 
+                                <chart:SfCartesianChart Margin="{OnPlatform Default='10,0', Android='7,0', iOS='7,0'}">
                                     <chart:SfCartesianChart.Title>
                                         <Grid>
                                             <Label Text="Yearly Portfolio Performance: Returns Over Time" HorizontalTextAlignment="Center" TextColor="Black" Margin="{OnPlatform Default=10, Android=7, iOS=7}"/>
@@ -183,13 +174,11 @@
                                     </chart:SfCartesianChart.YAxes>
                                     <chart:ColumnSeries ItemsSource="{Binding PortfolioHistory}" EnableTooltip="True" Fill="#006A71" x:Name="UpdateColumnData" XBindingPath="Year" YBindingPath="AnnualReturn">
                                     </chart:ColumnSeries>
-                                </chart:SfCartesianChart>
-                            </Grid>
+                                </chart:SfCartesianChart> 
                         </Border>
                     </Grid>
                 </Grid>
-            </Grid>
-        </Grid>
+            </Grid> 
     </Border>
 
 </ContentPage>
