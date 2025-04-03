@@ -74,11 +74,12 @@
                         <ColumnDefinition Width="0.6*"/>
                         <ColumnDefinition Width="0.4*"/>
                     </Grid.ColumnDefinitions>
+                  
                     <Border Grid.Column="0" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10">
                         <chart:SfCircularChart Grid.Row="0" HorizontalOptions="Fill" Margin="10"
                                             VerticalOptions="Fill">
                                 <chart:SfCircularChart.Title>
-                                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                                <HorizontalStackLayout HorizontalOptions="Center">
                                     <Label Text="Asset Allocation Distribution"
                                            HorizontalOptions="Center"
                                            TextColor="Black" Margin="{OnPlatform Default='280,12,0,0', Android='100,10,0,0'} "/>
@@ -105,12 +106,14 @@
                                 </chart:PieSeries>
                             </chart:SfCircularChart> 
                     </Border>
+                    
                     <Grid Grid.Column="1" Grid.Row="1" RowSpacing="12">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Border Grid.Row="0" Grid.Column="1" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10"> 
+                        
+                        <Border Grid.Row="0" Padding="0,0,0,10" Grid.Column="1" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10"> 
                                 <chart:SfCartesianChart x:Name="dateTimeChart" Margin="{OnPlatform Default='10,0', Android='10,0', iOS='10,0'}">
                                     <chart:SfCartesianChart.Title>
                                         <Grid>
@@ -144,8 +147,9 @@
                                     </chart:LineSeries>
                                 </chart:SfCartesianChart> 
                         </Border>
+                      
                         <!--Portfolio-->
-                        <Border Grid.Row="1" Grid.Column="1" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10"> 
+                    <Border Grid.Row="1" Grid.Column="1" Padding="0,0,0,10" StrokeThickness="2" Stroke="#66B2C0" StrokeShape="RoundRectangle 10,10,10,10"> 
                                 <chart:SfCartesianChart Margin="{OnPlatform Default='10,0', Android='7,0', iOS='7,0'}">
                                     <chart:SfCartesianChart.Title>
                                         <Grid>
@@ -176,6 +180,7 @@
                                     </chart:ColumnSeries>
                                 </chart:SfCartesianChart> 
                         </Border>
+                  
                     </Grid>
                 </Grid>
             </Grid> 
