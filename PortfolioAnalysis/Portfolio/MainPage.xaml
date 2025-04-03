@@ -93,8 +93,8 @@
                                     <chart:ChartLegend Placement="Right"/>
                                 </chart:SfCircularChart.Legend>
 
-                                <chart:PieSeries ItemsSource="{Binding Source={x:Reference viewModel}, Path=PortfolioData}"
-                                          PaletteBrushes="{Binding Source={x:Reference viewModel}, Path=Palette}" ShowDataLabels="True"
+                                <chart:PieSeries ItemsSource="{Binding PortfolioData}"
+                                          PaletteBrushes="{Binding Palette}" ShowDataLabels="True"
                                           x:Name="UpdateCircleData" XBindingPath="Sector" YBindingPath="Value">
                                     <chart:PieSeries.DataLabelSettings>
                                         <chart:CircularDataLabelSettings>
